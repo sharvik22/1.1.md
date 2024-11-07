@@ -101,14 +101,35 @@
 Установил MicroK8S, dashboard на ВМ1 настроил подключение к dashboard.
 
 P.S. При открытие dashboard возникает ошибка: 
-* что Kubernetes Dashboard не может быть доступен через небезопасный HTTP-прокси. Чтобы исправить это, вам нужно настроить доступ к Dashboard через HTTPS.
+- что Kubernetes Dashboard не может быть доступен через небезопасный HTTP-прокси. Чтобы исправить это, вам нужно настроить доступ к Dashboard через HTTPS.
 
+поэтому:
+* создал самоподписанный сертификат для HTTPS  
+* Создал секрет Kubernetes для сертификата
+* Настроил Kubernetes Dashboard для использования HTTPS
+* Сгенерировал токен для доступа к dashboard
 
+#Команды:
+
+* sudo apt update
+* sudo apt install snapd
+* sudo snap install microk8s --classic
+* sudo usermod -a -G microk8s $USER
+* sudo chown -f -R $USER ~/.kube
+* microk8s enable dashboard
+* token=$(microk8s kubectl -n kube-system get secret | grep default-token | cut -d " " -f1)
+microk8s kubectl -n kube-system describe secret $token
+* sudo microk8s refresh-certs --cert front-proxy-client.crt
+
+![image](https://github.com/user-attachments/assets/8762eba3-e029-425f-b64c-b88a1fee28a9)
 
 ### Задание 2. Установка и настройка локального kubectl
 1. Установить на локальную машину kubectl.
 2. Настроить локально подключение к кластеру.
 3. Подключиться к дашборду с помощью port-forward.
+
+
+
 
 ---
 
