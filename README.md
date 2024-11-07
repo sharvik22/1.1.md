@@ -109,7 +109,7 @@ P.S. При открытие dashboard возникает ошибка:
 * настроил Kubernetes Dashboard для использования HTTPS
 * сгенерировал токен для доступа к dashboard
 
-#Команды:
+# Команды:
 
 * sudo apt update
 * sudo apt install snapd
@@ -138,7 +138,7 @@ microk8s kubectl -n kube-system describe secret $token
 НА ВМ k8s прописал IP ВМ kubectl (на всякий случай, хотя подключение было и без указания IP)
 nano /var/snap/microk8s/current/certs/csr.conf.template
 
-#Команды:
+# Команды:
 
 * curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
 * chmod +x ./kubectl
