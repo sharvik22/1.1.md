@@ -127,6 +127,10 @@ microk8s kubectl -n kube-system describe secret $token
 
 ![Screenshot_1](https://github.com/user-attachments/assets/dac74111-2a0e-4bf0-acd4-225d946fd9a1)
 
+Второй вариант (использовал port-forward для подключения к Dashboard)
+
+microk8s kubectl -n kube-system port-forward service/kubernetes-dashboard 8443:443
+
 ![Screenshot_10](https://github.com/user-attachments/assets/3cca48a1-fcc8-403b-ad76-eb81e65c5fcb)
 
 ### Задание 2. Установка и настройка локального kubectl
@@ -135,7 +139,9 @@ microk8s kubectl -n kube-system describe secret $token
 3. Подключиться к дашборду с помощью port-forward.
 
 На второй ВМ установил kubectl, создал файл конфигурации и скопировал туда содержимое конфига с ВМ k8s.
+
 НА ВМ k8s прописал IP ВМ kubectl (на всякий случай, хотя подключение было и без указания IP)
+
 nano /var/snap/microk8s/current/certs/csr.conf.template
 
 # Команды:
