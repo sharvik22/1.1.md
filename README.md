@@ -140,9 +140,11 @@ microk8s kubectl -n kube-system port-forward service/kubernetes-dashboard 8443:4
 
 На второй ВМ установил kubectl, создал файл конфигурации и скопировал туда содержимое конфига с ВМ k8s.
 
-НА ВМ k8s прописал IP ВМ kubectl (на всякий случай, хотя подключение было и без указания IP)
+НА ВМ k8s прописал IP ВМ kubectl 
 
 nano /var/snap/microk8s/current/certs/csr.conf.template
+
+![image](https://github.com/user-attachments/assets/00d9e671-99e8-441d-aa2d-345f64f76a4c)
 
 # Команды:
 
