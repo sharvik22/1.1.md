@@ -105,9 +105,9 @@ P.S. При открытие dashboard возникает ошибка:
 
 поэтому:
 * создал самоподписанный сертификат для HTTPS  
-* Создал секрет Kubernetes для сертификата
-* Настроил Kubernetes Dashboard для использования HTTPS
-* Сгенерировал токен для доступа к dashboard
+* создал секрет Kubernetes для сертификата
+* настроил Kubernetes Dashboard для использования HTTPS
+* сгенерировал токен для доступа к dashboard
 
 #Команды:
 
@@ -123,13 +123,31 @@ microk8s kubectl -n kube-system describe secret $token
 
 ![image](https://github.com/user-attachments/assets/8762eba3-e029-425f-b64c-b88a1fee28a9)
 
+![image](https://github.com/user-attachments/assets/e2f829fc-db7b-4211-9406-e22585c97e38)
+
+![Screenshot_1](https://github.com/user-attachments/assets/dac74111-2a0e-4bf0-acd4-225d946fd9a1)
+
+![Screenshot_10](https://github.com/user-attachments/assets/3cca48a1-fcc8-403b-ad76-eb81e65c5fcb)
+
 ### Задание 2. Установка и настройка локального kubectl
 1. Установить на локальную машину kubectl.
 2. Настроить локально подключение к кластеру.
 3. Подключиться к дашборду с помощью port-forward.
 
+На второй ВМ установил kubectl, создал файл конфигурации и скопировал туда содержимое конфига с ВМ k8s.
+НА ВМ k8s прописал IP ВМ kubectl (на всякий случай, хотя подключение было и без указания IP)
+nano /var/snap/microk8s/current/certs/csr.conf.template
 
+#Команды:
 
+* curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+* chmod +x ./kubectl
+* sudo mv ./kubectl /usr/local/bin/kubectl
+* source <(kubectl completion bash)
+* echo 'source <(kubectl completion bash)' >> ~/.bashrc
+* source ~/.bashrc
+
+![image](https://github.com/user-attachments/assets/6386cfaf-b74b-45d7-80f9-78d7a7855d4a)
 
 ---
 
